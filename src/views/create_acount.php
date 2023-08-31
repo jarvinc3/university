@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/dist/output.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
-    <title>Logout</title>
+    <title>Registrer</title>
 </head>
 <body>
     <main class="h-[100vh] flex flex-col items-center bg-[#fff5d2]">
