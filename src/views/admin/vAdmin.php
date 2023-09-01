@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link href="/dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/modal.js" defer></script>
     <title>Admin</title>
 </head>
 
@@ -49,19 +51,17 @@
                 </div>
                 <div class="flex gap-2">
                     <p>Administrador</p>
-                    <span class="material-symbols-outlined cursor-pointer">expand_more</span>
-                    <div class=" absolute top-[68px] right-[20px] bg-white shadow-sm shadow-gray-400 rounded-md ">
-                        <div class="flex gap-3 pl-4 py-3 pr-[4rem]">
-                            <img src="/img/profile.svg" alt="profile edit">
-                            <p>Perfil</p>
-                        </div>
-                        <hr>
-                        <div class="flex gap-3 px-4 py-3 text-red-500">
-                            <span class="material-symbols-outlined">door_open</span>
-                            <p>Logout</p>
-                        </div>
+                    <span id="flecha" class="material-symbols-outlined cursor-pointer">chevron_right</span>
+                    <div id="modal" class=" absolute top-[68px] right-[20px] bg-white shadow-sm shadow-gray-400 rounded-md hidden">
+                        <form action="/src/accions/logout.php">
+                            <div class="flex gap-3 px-4 pr-[2rem] py-3 text-red-500">
+                                <span class="material-symbols-outlined cursor-none">door_open</span>
+                                <button type="submit">
+                                    <p>Logout</p>
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                </div>
 
             </nav>
             <div class="p-5 h-[80%] flex flex-col gap-6 mt-[70px] ">

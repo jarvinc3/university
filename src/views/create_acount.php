@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/dist/output.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+    <link rel="stylesheet" href="/css/style.css">
     <title>Registrer</title>
 </head>
 <body>
@@ -14,7 +19,7 @@
         <form class="bg-[white] flex flex-col items-center gap-5 pb-5 shadow-custom rounded-sm p-3" action="../accions/create.php" method="post">
             <h1 class="text-gray-500">Bienvenido! Crea tu cuenta.</h1>
             <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
-                <input class="px-3 py-[6px] w-[290px] rounded-l-md hover:bg-slate-200 focus:outline-0" type="email"  name="email" placeholder="Email">
+                <input class="px-3 py-[6px] w-[290px] rounded-l-md hover:bg-slate-200 focus:outline-0" type="email" name="email" placeholder="Email">
                 <span class="material-symbols-outlined text-gray-500 pl-2">mail</span>
             </div>
             <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">

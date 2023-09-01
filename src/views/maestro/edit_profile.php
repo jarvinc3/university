@@ -2,7 +2,7 @@
 session_start();
 require_once __DIR__ . '/../../conexion/db.php';
 $email = $_SESSION['email'];
-$consulta = $mysqli->query("SELECT *FROM estudiantes WHERE email = '$email'");
+$consulta = $mysqli->query("SELECT *FROM maestros WHERE email = '$email'");
 $resultado = $consulta->fetch_assoc();
 ?>
 
@@ -15,7 +15,7 @@ $resultado = $consulta->fetch_assoc();
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link href="/dist/output.css" rel="stylesheet">
     <script src="/js/modal.js" defer></script>
-    <title>Alumno</title>
+    <title>Maestro </title>
 </head>
 
 <body>
@@ -24,7 +24,7 @@ $resultado = $consulta->fetch_assoc();
             <img src="/img/logo2.jpg" alt="logo" class="w-[100%] ">
             <hr class=" border-[#51575e]">
             <div class="p-[20px] flex flex-col gap-2">
-                <h2 class="text-[#9c9fa1] font-medium">Alumno</h2>
+                <h2 class="text-[#9c9fa1] font-medium">Maestro</h2>
                 <div class="text-[#9c9fa1] font-medium flex">
                     <div class="flex gap-1">
                         <p><?php echo $resultado['name'] ?></p>
@@ -34,14 +34,10 @@ $resultado = $consulta->fetch_assoc();
             </div>
             <hr class="w-[230px] ml-[14px] border-[#4d5359]">
             <div class="p-[20px] pt-6 flex flex-col gap-4">
-                <h1 class="text-[#9c9fa1] w-[100%] flex justify-center font-semibold">MENU ALUMNOS</h1>
-                <a href="./calificaciones.php" class="flex gap-3">
-                    <span class="material-symbols-outlined text-[#9c9fa1]">task</span>
-                    <h2 class="text-[#9c9fa1] font-medium">Ver Calificaciones</h2>
-                </a>
-                <a href="" class="flex gap-3">
-                    <span class="material-symbols-outlined text-[#9c9fa1]">tv_gen</span>
-                    <h2 class="text-[#9c9fa1] font-medium">Administra tus Clases</h2>
+                <h1 class="text-[#9c9fa1] w-[100%] flex justify-center font-semibold">MENU MAESTRO</h1>
+                <a href="./maestro_alumno_read.php" class="flex gap-3">
+                    <span class="material-symbols-outlined text-[#9c9fa1]">school</span>
+                    <h2 class="text-[#9c9fa1] font-medium">Alumnos</h2>
                 </a>
             </div>
         </section>
@@ -49,7 +45,7 @@ $resultado = $consulta->fetch_assoc();
             <nav class="bg-white w-[80%] h-[10%] flex justify-between items-center gap-3 px-3 shadow-sm shadow-gray-400 fixed">
                 <div class="flex gap-3">
                     <span class="material-symbols-outlined text-[#b6beb3] text-lg">menu</span>
-                    <h1 class="text-[#b6beb3] font-medium">Perfil</h1>
+                    <h1 class="text-[#b6beb3] font-medium">Home</h1>
                 </div>
                 <div class="flex gap-2">
                     <div class="flex gap-1">
@@ -58,9 +54,9 @@ $resultado = $consulta->fetch_assoc();
                     </div>
                     <span id="flecha" class="material-symbols-outlined cursor-pointer">chevron_right</span>
                     <div id="modal" class=" absolute top-[68px] right-[20px] bg-white shadow-sm shadow-gray-400 rounded-md hidden">
-                        <a href="./vAlumno.php">
+                        <a href="./vMaestro.php">
                             <div class="flex gap-3 pl-4 py-3 pr-[4rem]">
-                                <span class="material-symbols-outlined">home</span>
+                            <span class="material-symbols-outlined">home</span>
                                 <p>Home</p>
                             </div>
                         </a>
@@ -81,9 +77,9 @@ $resultado = $consulta->fetch_assoc();
                 <div class="flex justify-between">
                     <h1 class=" text-2xl font-medium text-gray-700">Editar datos del perfil</h1>
                     <div class="flex gap-1">
-                        <a href="./vAlumno.php">
+                        <a href="./vMaestro.php">
                             <p class="text-blue-500">Home</p>
-                        </a>/ <p>Perfil</p>
+                        </a>/ <p>Clase</p>
                     </div>
                 </div>
                 <div class="bg-white shadow-sm shadow-gray-400 w-[100%] rounded-sm  flex flex-col justify-center gap-1">
@@ -91,15 +87,7 @@ $resultado = $consulta->fetch_assoc();
                         <h2>Informacion de Usuario</h2>
                     </div>
                     <hr>
-                    <form class="flex flex-col gap-4 p-3 pl-6" action="/src/accions/edit_profile_a.php" method="post">
-                        <div>
-                            <strong>
-                                <p>Matricula</p>
-                            </strong>
-                            <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md bg-slate-200 hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
-                                <input class="px-3 py-[6px] w-[100%] rounded-l-md bg-slate-200 hover:bg-slate-200 focus:outline-0" type="text" name="matricula" value="<?php echo $resultado['matricula'] ?>">
-                            </div>
-                        </div>
+                    <form class="flex flex-col gap-4 p-3 pl-6" action="/src/accions/edit_profile_m.php" method="post">
                         <div>
                             <strong>
                                 <p>Correo Electronico</p>

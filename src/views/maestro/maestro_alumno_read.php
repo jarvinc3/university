@@ -12,11 +12,10 @@ $resultado = $consulta->fetch_assoc();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link href="/dist/output.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
     <script src="/js/modal.js" defer></script>
-    <title>Maestro</title>
+    <title>Maestro </title>
 </head>
 
 <body>
@@ -36,7 +35,7 @@ $resultado = $consulta->fetch_assoc();
             <hr class="w-[230px] ml-[14px] border-[#4d5359]">
             <div class="p-[20px] pt-6 flex flex-col gap-4">
                 <h1 class="text-[#9c9fa1] w-[100%] flex justify-center font-semibold">MENU MAESTRO</h1>
-                <a href="./maestro_alumno_read.php" class="flex gap-3">
+                <a href="#" class="flex gap-3">
                     <span class="material-symbols-outlined text-[#9c9fa1]">school</span>
                     <h2 class="text-[#9c9fa1] font-medium">Alumnos</h2>
                 </a>
@@ -55,7 +54,7 @@ $resultado = $consulta->fetch_assoc();
                     </div>
                     <span id="flecha" class="material-symbols-outlined cursor-pointer">chevron_right</span>
                     <div id="modal" class=" absolute top-[68px] right-[20px] bg-white shadow-sm shadow-gray-400 rounded-md hidden">
-                        <a href="./edit_profile.php">
+                    <a href="./edit_profile.php">
                             <div class="flex gap-3 pl-4 py-3 pr-[4rem]">
                                 <img src="/img/profile.svg" alt="profile edit">
                                 <p>Perfil</p>
@@ -76,14 +75,24 @@ $resultado = $consulta->fetch_assoc();
             </nav>
             <div class="p-5 h-[80%] flex flex-col gap-6 mt-[70px] ">
                 <div class="flex justify-between">
-                    <h1 class=" text-2xl font-medium text-gray-700">Dashboard</h1>
+                    <h1 class=" text-2xl font-medium text-gray-700">Alumnos de la Clase de Guarani</h1>
                     <div class="flex gap-1">
-                        <p class="text-blue-500">Home</p> / <p>Dashboard</p>
+                        <a href="./vMaestro.php">
+                            <p class="text-blue-500">Home</p>
+                        </a>/ <p>Perfil</p>
                     </div>
                 </div>
-                <div class="bg-white shadow-sm shadow-gray-400 w-[600px] h-[75px] rounded-sm p-3 pl-6 flex flex-col justify-center gap-1">
-                    <p class="text-gray-600 text-sm">Bienvenido</p>
-                    <p class="text-gray-600 text-sm">Seleciona la accion que quieras realizar en la pestaña del menu de la izquierda</p>
+                <div class="bg-white shadow-sm shadow-gray-400 w-[100%] rounded-sm  flex flex-col justify-center gap-1">
+                    <div class="flex items-center p-3 pl-6">
+                        <h2>Alumnos de clase guarani</h2>
+                    </div>
+                    <hr>
+                    <div class="flex flex-col gap-4 p-3 pl-6">
+
+                    </div>
+                </div>
+                <div class="bg-white shadow-sm shadow-gray-400 w-[100%] rounded-sm p-3  flex flex-col justify-center gap-1">
+                    <p>Created by <strong>jarvinc3</strong></p>
                 </div>
             </div>
         </section>
