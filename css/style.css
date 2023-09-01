@@ -5,3 +5,22 @@
 .nav{
     width: 80% !important;
 }
+
+.background{
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+#menu1{
+    animation: fadeIn 1s;
+    transition: opacity 1s;
+}
+
+#modal{
+    animation: fadeIn 1s;
+    transition: opacity 7ms;
+}
