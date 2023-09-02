@@ -1,9 +1,7 @@
-/* *{
-    font-family: 'Montserrat', sans-serif;
-} */
 
 .nav{
     width: 80% !important;
+    left: 20%;
 }
 
 .background{
@@ -20,7 +18,18 @@
     transition: opacity 1s;
 }
 
+#menu2{
+    animation: fadeIn 1s;
+    transition: opacity 1s;
+}
+
 #modal{
     animation: fadeIn 1s;
     transition: opacity 7ms;
+}
+
+.ml{
+    animation: fadeIn 1s;
+    transition: opacity 7ms;
+    margin-left: 20%;
 }

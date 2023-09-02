@@ -6,6 +6,6 @@ const nav = document.querySelector("#nav");
 
 openMenu.addEventListener("click", () => {
     menu1.classList.toggle("hidden");
-    menu2.classList.toggle("ml-[20%]");
+    menu2.classList.toggle("ml");
     nav.classList.toggle("nav");
   });

@@ -18,7 +18,7 @@ try {
         $_SESSION['email'] =  $resultado1['email'];
         $_SESSION['id'] = $resultado1['id'];
         $_SESSION['name'] =  $resultado1['name'];
-        header("location: ./src/views/alumno/vAlumno.php ");
+        header("location:../views/alumno/vAlumno.php");
         exit();
     }
 } catch (mysqli_sql_exception $e) {
