@@ -2,7 +2,7 @@
 session_start();
 
 try {
-    require_once "../conexion/db.php";
+    require_once "../../conexion/db.php";
 
     if ($mysqli->connect_error) {
         die("Error de conexión a la base de datos: " . $mysqli->connect_error);

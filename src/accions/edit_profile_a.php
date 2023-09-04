@@ -38,7 +38,7 @@ if (
 
     }
     if (!empty($password)) {
-        $query_estudiantes .= "`contrasena` = ?, ";
+        $query_estudiantes .= "`pssword` = ?, ";
         $params_estudiantes[] = $contrahash;
         $_SESSION['password'] = $password;
 

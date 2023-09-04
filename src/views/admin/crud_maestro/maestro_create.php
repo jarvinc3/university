@@ -11,6 +11,9 @@ require_once __DIR__ . '/../../../conexion/db.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link href="/dist/output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/modal.js" defer></script>
     <script src="/js/menu.js" defer></script>
@@ -71,11 +74,11 @@ require_once __DIR__ . '/../../../conexion/db.php';
             </nav>
             <div class="p-5 h-[80%] flex flex-col gap-6 mt-[70px] ">
                 <div class="flex justify-between">
-                    <h1 class=" text-2xl font-medium text-gray-700">Lista de Maestros</h1>
+                    <h1 class=" text-2xl font-medium text-gray-700">Crear Maestro</h1>
                     <div class="flex gap-1">
                         <a href="../vAdmin.php">
                             <p class="text-blue-500">Home</p>
-                        </a>/ <p>Maestros</p>
+                        </a>/ <p>Maestros create</p>
                     </div>
                 </div>
                 <div class="bg-white shadow-sm shadow-gray-400 w-[100%] rounded-sm  flex flex-col justify-center gap-1">
@@ -84,7 +87,7 @@ require_once __DIR__ . '/../../../conexion/db.php';
                     </div>
                     <hr>
                     <div class="flex flex-col gap-4 p-3 pl-6">
-                    <form class="flex flex-col gap-4 p-3 pl-6" action="/src/accions/crud_maestro/crud_create_maestros.php" method="post">
+                        <form class="flex flex-col gap-4 p-3 pl-6" action="/src/accions/crud_maestro/crud_create_maestros.php" method="post">
                             <div>
                                 <strong>
                                     <p>Correo Electronico</p>
@@ -133,8 +136,10 @@ require_once __DIR__ . '/../../../conexion/db.php';
                                     <input class="px-3 py-[6px]  rounded-l-md hover:bg-slate-200 focus:outline-0" type="date" name="fecha_nacimiento">
                                 </div>
                             </div>
-                            <a href="./crud_maestros.php" class="w-[100px] bg-gray-400 text-white px-4 py-[6px] rounded-md right-5  hover:bg-gray-500 hover:shadow-custom hover:shadow-zinc-800">close</a>
-                            <button type="submit" class="w-[100px] bg-blue-500 text-white px-4 py-[6px] rounded-md right-5  hover:bg-blue-600 hover:shadow-custom hover:shadow-zinc-800">crear</button>
+                            <div class="flex gap-2">
+                                <a href="./crud_maestros.php" class="bg-gray-400 text-white px-4 py-[6px] rounded-md right-5  hover:bg-gray-500 hover:shadow-custom hover:shadow-zinc-800">close</a>
+                                <button type="submit" class="bg-blue-500 text-white px-4 py-[6px] rounded-md right-5  hover:bg-blue-600 hover:shadow-custom hover:shadow-zinc-800">crear</button>
+                            </div>
                         </form>
                     </div>
                 </div>

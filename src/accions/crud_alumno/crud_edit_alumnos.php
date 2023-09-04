@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../conexion/db.php";
+require_once "../../conexion/db.php";
 
 $matricula = $_POST["matricula"];
 $email = $_POST["email"];
@@ -11,9 +11,9 @@ $fecha_nacimiento = $_POST['fecha_nacimiento'];
 
 $consulta = $mysqli->query("SELECT *FROM estudiantes WHERE email = '$email'");
 $resultado = $consulta->fetch_assoc();
-$correo = $resultado['email'];
-$consulta_estudiantes = $mysqli->prepare("SELECT * FROM estudiantes WHERE email = ?");
-$consulta_estudiantes->bind_param("s", $correo);
+$DNI = $resultado['matricula'];
+$consulta_estudiantes = $mysqli->prepare("SELECT * FROM estudiantes WHERE matricula = ?");
+$consulta_estudiantes->bind_param("s", $DNI);
 $consulta_estudiantes->execute();
 $resultado_estudiantes = $consulta_estudiantes->get_result()->fetch_assoc();
 
@@ -66,9 +66,8 @@ if (
   
 
     $query_estudiantes = rtrim($query_estudiantes, ", ");
-    $query_estudiantes .= " WHERE `estudiantes`.`email` = ?";
-    $params_estudiantes[] = $correo;
-
+    $query_estudiantes .= " WHERE `estudiantes`.`matricula` = ?";
+    $params_estudiantes[] = $DNI;
 
     $stmt_estudiantes = $mysqli->prepare($query_estudiantes);
     $types_estudiantes = str_repeat("s", count($params_estudiantes));

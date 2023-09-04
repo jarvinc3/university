@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require_once __DIR__ . '/../../../conexion/db.php';
 $consultaEstudiantes = $mysqli->query("SELECT * FROM maestros");
@@ -19,6 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link href="/dist/output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/modal.js" defer></script>
     <script src="/js/menu.js" defer></script>
@@ -86,42 +89,90 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
                         </a>/ <p>Maestros</p>
                     </div>
                 </div>
-                <div class="bg-white shadow-sm shadow-gray-400 w-[100%] rounded-sm  flex flex-col justify-center gap-1">
-                    <div class="flex items-center justify-between p-3 pl-6">
+                <div class="bg-white shadow-sm shadow-gray-400 w-[100%] rounded-sm flex flex-col justify-center">
+                    <div class="flex items-center justify-between p-3">
                         <h2>Informacion de Maestros</h2>
-                        <a href="./maestro_create.php"><button type="submit" class="w-[170px] bg-blue-500 text-white px-4 py-[6px] rounded-md right-5  hover:bg-blue-600 hover:shadow-custom hover:shadow-zinc-800">Agregar Maestro</button></a>
+                        <a href="./maestro_create.php"><button type="submit" class="bg-blue-500 text-white px-4 py-[6px] rounded-md right-5  hover:bg-blue-600 hover:shadow-custom hover:shadow-zinc-800">Agregar Maestro</button></a>
                     </div>
                     <hr>
-                    <div class="flex flex-col gap-4 p-3 pl-6">
-                    <table border="1" >
-                            <tr>
-                                <th>#</th>
-                                <th>Nombre</th>
-                                <th>Email</th>
-                                <th>Direccion</th>
-                                <th>Fecha de Nacimiento</th>
-                                <th>Clase Asignada</th>
-                                <th>Acciones</th>
-                            </tr>
-                            <?php
-                            while ($row = $consultaEstudiantes->fetch_assoc()) {
-                               
-                                echo "<tr>";
-                                echo "<td>" . $row['id'] . "</td>";
-                                echo "<td>" . $row['name'] . $row['apellido'] ."</td>";
-                                echo "<td>" . $row['email'] .   "</td>";
-                                echo "<td>" . $row['direccion'] . "</td>";
-                                echo "<td>" . $row['fecha_de_nacimiento'] . "</td>";
-                                echo "<td>" .  "</td>";
-                                echo "<td>
-                                    <a href='./maestro_edit.php?id=" . $row['id'] . "'><span class='material-symbols-outlined'>edit</span></a>
-                                    <a href='/src/accions/crud_maestro/delete_maestros.php?id=" . $row['id'] . "'><span class='material-symbols-outlined'>delete</span></a>
+                    <div class="w-[100%] flex justify-end gap-1 p-2 pt-4 px-3">
+                        <p>Search:</p>
+                        <input type="text" class="border-2 rounded-md">
+                    </div>
+                    <div class="flex flex-col gap-4 px-6 py-2">
+                        <table class="w-full">
+                            <thead class="text-black font-medium text-sm">
+                                <tr class="bg-white">
+                                    <th scope="col" class="px-2 py-2 border-2 border-gray-300">
+                                        <div class="flex justify-between">
+                                            #
+                                            <span class="material-symbols-outlined text-gray-400 text-base">swap_vert</span>
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="px-2 py-2 border-2 border-gray-300">
+                                        <div class="flex justify-between items-center">
+                                            Nombre
+                                            <span class="material-symbols-outlined text-gray-400 text-base">swap_vert</span>
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="px-2 py-2 border-2 border-gray-300">
+                                        <div class="flex justify-between items-center">
+                                            Email
+                                            <span class="material-symbols-outlined text-gray-400 text-base">swap_vert</span>
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="px-2 py-2 border-2 border-gray-300">
+                                        <div class="flex justify-between items-center">
+                                            Direccion<span class="material-symbols-outlined text-gray-400 text-base">swap_vert</span>
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="px-2 py-2 border-2 border-gray-300">
+                                        <div class="flex justify-between items-center">
+                                            Fecha de Nacimiento<span class="material-symbols-outlined text-gray-400 text-base">swap_vert</span>
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="px-2 py-2 border-2 border-gray-300">
+                                        <div class="flex justify-between items-center">
+                                            Clase Asignada<span class="material-symbols-outlined text-gray-400 text-base">swap_vert</span>
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="px-2 py-2 border-2 border-gray-300">
+                                        <div class="flex justify-between items-center">
+                                            Acciones<span class="material-symbols-outlined text-gray-400 text-base">swap_vert</span>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                while ($row = $consultaEstudiantes->fetch_assoc()) {
+
+                                    echo "<tr>";
+                                    echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['id'] . "</td>";
+                                    echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['name'] . $row['apellido'] . "</td>";
+                                    echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['email'] .   "</td>";
+                                    echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['direccion'] . "</td>";
+                                    echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['fecha_de_nacimiento'] . "</td>";
+                                    echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" .  "</td>";
+                                    echo "<td class='px-2 py-2 border-[1px] border-gray-200 flex justify-center'>
+                                    <a href='./maestro_edit.php?id=" . $row['id'] . "'><span class='material-symbols-outlined text-blue-400'>edit_square</span></a>
+                                    <a href='/src/accions/crud_maestro/delete_maestros.php?id=" . $row['id'] . "'><span class='material-symbols-outlined text-red-400'>delete</span></a>
                                 </td>";
-                                echo "</tr>";
-                            }
-                            ?>
+                                    echo "</tr>";
+                                }
+                                ?>
+                            </tbody>
                         </table>
-                    </div>                   
+                    </div>
+                    <div class="w-[100%] flex items-center justify-between gap-1 p-2 pt-4 px-6 pb-6">
+                        <p>Showing 1 to 10 of 11 entries</p>
+                        <div class="flex">
+                            <button class="hover:bg-slate-200 px-3 py-2 border-[1px] border-gray-500 rounded-l-lg">Previous</button>
+                            <button class="hover:bg-blue-500 hover:text-white text-blue-600 px-3 py-2 border-y-[1px] border-gray-500">1</button>
+                            <button class="hover:bg-blue-500 hover:text-white text-blue-600 px-3 py-2 border-y-[1px] border-l-[1px] border-gray-500">2</button>
+                            <button class="hover:bg-slate-200 text-blue-600 px-3 py-2 border-[1px] border-gray-500 rounded-r-lg">Next</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="bg-white shadow-sm shadow-gray-400 w-[100%] rounded-sm p-3  flex flex-col justify-center gap-1">
                     <p>Created by <strong>jarvinc3</strong></p>

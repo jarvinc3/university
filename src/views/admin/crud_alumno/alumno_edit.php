@@ -17,6 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link href="/dist/output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/modal.js" defer></script>
     <script src="/js/menu.js" defer></script>
@@ -77,16 +80,16 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
             </nav>
             <div class="p-5 h-[80%] flex flex-col gap-6 mt-[70px] ">
                 <div class="flex justify-between">
-                    <h1 class=" text-2xl font-medium text-gray-700">Lista de Alumnos</h1>
+                    <h1 class=" text-2xl font-medium text-gray-700">Editar Alumnos</h1>
                     <div class="flex gap-1">
                         <a href="../vAdmin.php">
                             <p class="text-blue-500">Home</p>
-                        </a>/ <p>Alumno</p>
+                        </a>/ <p>Alumno edit</p>
                     </div>
                 </div>
                 <div class="bg-white shadow-sm shadow-gray-400 w-[100%] rounded-sm  flex flex-col justify-center gap-1">
                     <div class="flex items-center p-3 pl-6">
-                        <h2>Informacion de alumnos</h2>
+                        <h2>Editar Alumno</h2>
                     </div>
                     <hr>
                     <div class="flex flex-col gap-4 p-3 pl-6">
@@ -95,16 +98,16 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
                                 <strong>
                                     <p>DNI</p>
                                 </strong>
-                                <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md bg-slate-200 hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
-                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md bg-slate-200 hover:bg-slate-200 focus:outline-0" type="text" name="matricula" value="<?php echo $resultado['matricula']; ?>">
+                                <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
+                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="matricula" value="<?php echo $resultado['matricula']; ?>">
                                 </div>
                             </div>
                             <div>
                                 <strong>
                                     <p>Correo Electronico</p>
                                 </strong>
-                                <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md  hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
-                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="email" value="<?php echo $resultado['email']; ?>">
+                                <div class="bg-slate-200 flex items-center border-gray-300 border-2 pr-3 rounded-md  hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
+                                    <input readonly class="bg-slate-200 px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="email" value="<?php echo $resultado['email']; ?>">
                                 </div>
                             </div>
                             <div>
@@ -139,8 +142,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
                                     <input class="px-3 py-[6px]  rounded-l-md hover:bg-slate-200 focus:outline-0" type="date" name="fecha_de_nacimiento" value="<?php echo $resultado['fecha_de_nacimiento']; ?>">
                                 </div>
                             </div>
-                            <a href="./crud_alumnos.php" class="w-[100px] bg-gray-400 text-white px-4 py-[6px] rounded-md right-5  hover:bg-gray-500 hover:shadow-custom hover:shadow-zinc-800">close</a>
-                            <button type="submit" class="w-[170px] bg-blue-500 text-white px-4 py-[6px] rounded-md right-5  hover:bg-blue-600 hover:shadow-custom hover:shadow-zinc-800">Guardar Cambios</button>
+                            <div class="flex gap-2">
+                                <a href="./crud_alumnos.php" class="bg-gray-400 text-white px-4 py-[6px] rounded-md right-5  hover:bg-gray-500 hover:shadow-custom hover:shadow-zinc-800">close</a>
+                                <button type="submit" class="bg-blue-500 text-white px-4 py-[6px] rounded-md right-5  hover:bg-blue-600 hover:shadow-custom hover:shadow-zinc-800">Guardar Cambios</button>
+                            </div>
                         </form>
                     </div>
                 </div>

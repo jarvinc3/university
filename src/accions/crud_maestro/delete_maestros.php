@@ -2,7 +2,7 @@
 session_start();
 
 try {
-    require_once "../conexion/db.php";
+    require_once "../../conexion/db.php";
 
     if ($mysqli->connect_error) {
         die("Error de conexión a la base de datos: " . $mysqli->connect_error);
@@ -18,7 +18,7 @@ try {
 
         if ($stmt->execute()) {
             // Éxito en la eliminación
-            header("Location: /src/views/admin/crud_maestros.php");
+            header("Location: /src/views/admin/crud_maestro/crud_maestros.php");
             exit();
         } else {
             // Manejar un posible error

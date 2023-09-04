@@ -14,6 +14,9 @@ $resultado = $consulta->fetch_assoc();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link href="/dist/output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/modal.js" defer></script>
     <script src="/js/menu.js" defer></script>
@@ -50,7 +53,7 @@ $resultado = $consulta->fetch_assoc();
         <section id="menu2" class="w-[100%] h-[100vh] bg-[#f5f6fa] ">
             <nav id="nav" class=" bg-white w-[100%] h-[9%] flex justify-between items-center gap-3 px-3 shadow-sm shadow-gray-400 fixed">
                 <div class="flex gap-3">
-                <span id="menu-icon" class="material-symbols-outlined text-[#b6beb3] text-lg cursor-pointer hover:text-gray-600">menu</span>
+                    <span id="menu-icon" class="material-symbols-outlined text-[#b6beb3] text-lg cursor-pointer hover:text-gray-600">menu</span>
                     <h1 class="text-[#b6beb3] font-medium">Home</h1>
                 </div>
                 <div class="flex gap-2">
@@ -98,7 +101,7 @@ $resultado = $consulta->fetch_assoc();
                                 <p>Matricula</p>
                             </strong>
                             <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md bg-slate-200 hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
-                                <input class="px-3 py-[6px] w-[100%] rounded-l-md bg-slate-200 hover:bg-slate-200 focus:outline-0" type="text" name="matricula" value="<?php echo $resultado['matricula'] ?>">
+                                <input readonly class="px-3 py-[6px] w-[100%] rounded-l-md bg-slate-200 hover:bg-slate-200 focus:outline-0" type="text" name="matricula" value="<?php echo $resultado['matricula'] ?>">
                             </div>
                         </div>
                         <div>
@@ -150,7 +153,7 @@ $resultado = $consulta->fetch_assoc();
                             </div>
                         </div>
 
-                        <button type="submit" class="w-[170px] bg-blue-500 text-white px-4 py-[6px] rounded-md right-5  hover:bg-blue-600 hover:shadow-custom hover:shadow-zinc-800">Guardar Cambios</button>
+                        <button type="submit" class="bg-blue-500 w-[180px] text-white px-4 py-[6px] rounded-md right-5 hover:bg-blue-600 hover:shadow-custom hover:shadow-zinc-800">Guardar Cambios</button>
                     </form>
                 </div>
                 <div class="bg-white shadow-sm shadow-gray-400 w-[100%] rounded-sm p-3  flex flex-col justify-center gap-1">

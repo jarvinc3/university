@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../conexion/db.php";
+require_once "../../conexion/db.php";
 
 $email = $_POST["email"];
 $nombre = $_POST["name"];
@@ -71,7 +71,7 @@ if (
    
     if ($stmt_estudiantes->execute()) {
        
-        header("Location: /src/views/admin/crud_maestros.php");
+        header("Location: /src/views/admin/crud_maestro/crud_maestros.php");
     } else {
         echo "Error en la actualización: " . $stmt_estudiantes->error . " - " . $stmt_usuarios->error;
     }

@@ -9,7 +9,7 @@ $direccion = $_POST['direccion'];
 $fecha_nacimiento = $_POST['fecha_nacimiento'];
 
 try {
-    require_once "../conexion/db.php";
+    require_once "../../conexion/db.php";
     $consulta1 = $mysqli->query("SELECT * FROM `maestros` WHERE email = '$email'");
     $resultado1 = $consulta1->fetch_assoc();
     if ($resultado1['email'] == "$email") {
@@ -18,11 +18,10 @@ try {
     } else {
         $contrahash = password_hash($password, PASSWORD_DEFAULT);
 
-        // Corrección en la cadena de consulta SQL aquí
         $mysqli->query("INSERT INTO maestros (email, pssword, name, apellido, direccion, fecha_de_nacimiento) 
             VALUES ('$email', '$contrahash', '$nombre', '$apellidos', '$direccion', '$fecha_nacimiento');");
         
-        header("location: /src/views/admin/crud_maestros.php");
+        header("location: /src/views/admin/crud_maestro/crud_maestros.php");
         exit();
     }
 } catch (mysqli_sql_exception $e) {
