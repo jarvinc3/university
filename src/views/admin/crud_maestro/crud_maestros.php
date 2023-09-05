@@ -1,18 +1,9 @@
 <?php
 session_start();
 require_once __DIR__ . '/../../../conexion/db.php';
-$consultaEstudiantes = $mysqli->query("SELECT maestros.*, cursos.nombreCurso
-FROM maestros 
-INNER JOIN cursos ON cursos.maestroID = maestros.id");
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
-    $id = $_GET['id'];
-
-    $consulta = $mysqli->query("SELECT *FROM maestros WHERE id = '$id'");
-    $resultado = $consulta->fetch_assoc();
-}
-
-
-
+$consulta = $mysqli->query("SELECT maestros.*, cursos.nombreCurso 
+ FROM maestros 
+LEFT JOIN cursos ON maestros.id = cursos.maestroID");
 ?>
 
 <!DOCTYPE html>
@@ -149,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
                             </thead>
                             <tbody>
                                 <?php
-                                while ($row = $consultaEstudiantes->fetch_assoc()) {
+                                while ($row = $consulta->fetch_assoc()) {
 
                                     echo "<tr>";
                                     echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['id'] . "</td>";

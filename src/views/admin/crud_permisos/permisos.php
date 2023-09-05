@@ -1,3 +1,14 @@
+<?php
+session_start();
+require_once __DIR__ . '/../../../conexion/db.php';
+$query = "SELECT email, 'administrador' AS rol, id AS id FROM administrador
+          UNION
+          SELECT email, 'maestro' AS rol, id AS id FROM maestros
+          UNION
+          SELECT email, 'estudiante' AS rol, id AS id FROM estudiantes";
+$result = $mysqli->query($query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,7 +91,7 @@
                     <div class="flex items-center justify-between p-3">
                         <h2>Informacion de Permisos</h2>
                     </div>
-                        <hr>
+                    <hr>
                     <div class="w-[100%] flex justify-end gap-1 p-2 pt-4 px-3">
                         <p>Search:</p>
                         <input type="text" class="border-2 rounded-md">
@@ -123,17 +134,16 @@
                             </thead>
                             <tbody>
                                 <?php
-                                // while ($row = $consultaEstudiantes->fetch_assoc()) {
-
-                                echo "<tr>";
-                                echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . "</td>";
-                                echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . "</td>";
-                                echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . "</td>";
-                                echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . "</td>";
-                                echo "<td class='px-2 py-2 border-[1px] border-gray-200 flex justify-center'>
-                                    <a href='./edit_permisos.php?id=" . "'><span class='material-symbols-outlined text-blue-400'>edit_square</span></a></td>";
-                                echo "</tr>";
-                                // }
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<tr>";
+                                    echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['id'] . "</td>";
+                                    echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['email'] . "</td>";
+                                    echo "<td class='px-2 py-2 border-[1px] border-gray-200'> <p class=' text-center bg-[#1c9eac] px-2 py-1 rounded-md text-white w-[130px]'>" . $row['rol'] . "</p>  </td>";
+                                    echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . "</td>";
+                                    echo "<td class='px-2 py-2 border-[1px] border-gray-200 flex justify-center'>
+                                    <a href='./edit_permisos.php?id=" . $row['id'] . "'><span class='material-symbols-outlined text-blue-400'>edit_square</span></a></td>";
+                                    echo "</tr>";
+                                }
                                 ?>
                             </tbody>
                         </table>

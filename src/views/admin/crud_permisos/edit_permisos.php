@@ -1,3 +1,14 @@
+<?php
+session_start();
+require_once __DIR__ . '/../../../conexion/db.php';
+$query = "SELECT email, 'administrador' AS rol, id AS id FROM administrador
+          UNION
+          SELECT email, 'maestro' AS rol, id AS id FROM maestros
+          UNION
+          SELECT email, 'estudiante' AS rol, id AS id FROM estudiantes";
+$result = $mysqli->query($query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,7 +109,7 @@
                                     <p>Rol del Usuario</p>
                                 </strong>
                                 <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md  hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
-                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="name" value="<?php echo $resultado['name']; ?>">
+                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="name" value="<?php echo $resultado['rol']; ?>">
                                 </div>
                             </div>
                             <div>

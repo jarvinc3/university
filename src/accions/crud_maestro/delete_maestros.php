@@ -11,6 +11,11 @@ try {
     if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
         $id = $_GET['id'];
 
+        $query = "UPDATE cursos SET maestroID = NULL WHERE maestroID = ?";
+        $stmt = $mysqli->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+
         // Evitar la vulnerabilidad de inyección SQL usando consultas preparadas
         $query = "DELETE FROM maestros WHERE id = ?";
         $stmt = $mysqli->prepare($query);

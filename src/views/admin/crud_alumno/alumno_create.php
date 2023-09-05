@@ -93,7 +93,7 @@ require_once __DIR__ . '/../../../conexion/db.php';
                                     <p>Matricula</p>
                                 </strong>
                                 <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
-                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="matricula">
+                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="matricula"  placeholder="Ingresa una matricula">
                                 </div>
                             </div>
                             <div>
@@ -101,7 +101,7 @@ require_once __DIR__ . '/../../../conexion/db.php';
                                     <p>Correo Electronico</p>
                                 </strong>
                                 <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md  hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
-                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="email" name="email">
+                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="email" name="email"  placeholder="Ingresa un correo">
                                 </div>
                             </div>
                             <div>
@@ -109,7 +109,7 @@ require_once __DIR__ . '/../../../conexion/db.php';
                                     <p>Contraseña Ingresa para cambiar la contraseña</p>
                                 </strong>
                                 <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md  hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
-                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="password" name="contrasena" placeholder="Para modificar ingresa una nueva contraseña">
+                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="password" name="contrasena" placeholder="Ingresa una contraseña">
                                 </div>
                             </div>
                             <div>
@@ -117,7 +117,7 @@ require_once __DIR__ . '/../../../conexion/db.php';
                                     <p>Nombre(s)</p>
                                 </strong>
                                 <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md  hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
-                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="nombre">
+                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="nombre"  placeholder="Ingresa un nombre">
                                 </div>
                             </div>
                             <div>
@@ -125,7 +125,7 @@ require_once __DIR__ . '/../../../conexion/db.php';
                                     <p>Apellidos</p>
                                 </strong>
                                 <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md  hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
-                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="apellidos">
+                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="apellidos"  placeholder="Ingresa un apellido">
                                 </div>
                             </div>
                             <div>
@@ -133,7 +133,7 @@ require_once __DIR__ . '/../../../conexion/db.php';
                                     <p>Direccion</p>
                                 </strong>
                                 <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md  hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
-                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="direccion">
+                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="direccion"  placeholder="Ingresa una direccion">
                                 </div>
                             </div>
                             <div>

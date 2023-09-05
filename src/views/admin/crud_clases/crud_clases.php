@@ -142,7 +142,7 @@ INNER JOIN maestros ON cursos.maestroID = maestros.id");
                                 echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . "</td>";
                                 echo "<td class='px-2 py-2 border-[1px] border-gray-200 flex justify-center'>
                                     <a href='./edit_clases.php?cursoID=" . $row['cursoID'] . "'><span class='material-symbols-outlined text-blue-400'>edit_square</span></a>
-                                    <a href='#?id=" . "'><span class='material-symbols-outlined text-red-400'>delete</span></a>
+                                    <a href='/src/accions/crud_clases/delete_clase.php?cursoID=" . $row['cursoID'] . "'><span class='material-symbols-outlined text-red-400'>delete</span></a>
                                 </td>";
                                 echo "</tr>";
                                 }

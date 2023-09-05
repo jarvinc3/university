@@ -7,7 +7,7 @@ $email = $_POST["email"];
 $nombre = $_POST["name"];
 $apellidos = $_POST["apellidos"];
 $direccion = $_POST['direccion'];
-$fecha_nacimiento = $_POST['fecha_nacimiento'];
+$fecha_nacimiento = $_POST['fecha_de_nacimiento'];
 
 $consulta = $mysqli->query("SELECT *FROM estudiantes WHERE email = '$email'");
 $resultado = $consulta->fetch_assoc();
@@ -56,9 +56,9 @@ if (
 
     }
     if (!empty($fecha_nacimiento)) {
-        $query_estudiantes .= "`fecha_nacimiento` = ?, ";
+        $query_estudiantes .= "`fecha_de_nacimiento` = ?, ";
         $params_estudiantes[] = $fecha_nacimiento;
-        $_SESSION['fecha_nacimiento'] = $fecha_nacimiento;
+        $_SESSION['fecha_de_nacimiento'] = $fecha_nacimiento;
 
     }
   

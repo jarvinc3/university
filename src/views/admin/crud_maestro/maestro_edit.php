@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
                                     <p>Fecha de nacimiento</p>
                                 </strong>
                                 <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md  hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
-                                    <input class="px-3 py-[6px]  rounded-l-md hover:bg-slate-200 focus:outline-0" type="date" name="fecha_de_nacimiento" value="<?php echo $resultado['fecha_de_nacimiento']; ?>">
+                                    <input class="px-3 py-[6px]  rounded-l-md hover:bg-slate-200 focus:outline-0" type="date" name="fecha_nacimiento" value="<?php echo $resultado['fecha_de_nacimiento']; ?>">
                                 </div>
                             </div>
                             <div>
@@ -139,7 +139,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
                                     <p>Clase Asignada</p>
                                 </strong>
                                 <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md  hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
-                                    <select class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="name" value=""></select>
+                                    <select class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="curso" value=""><?php
+                                        $consulta1 = $mysqli->query("SELECT * from cursos");
+                                        $resultado1 = $consulta1->fetch_assoc();
+                                        while ($row = $consulta1->fetch_assoc()) {
+                                            $selected = ($row['cursoID'] == $resultado1['cursoID']) ? 'selected' : '';
+                                            echo "<option ' value='" . $row['cursoID'] . "' $selected>" . $row['cursoID'] . " - " . $row['nombreCurso'] . "</option>";
+                                        }
+                                        ?></select>
                                 </div>
                             </div>
                             <div class="flex gap-2">

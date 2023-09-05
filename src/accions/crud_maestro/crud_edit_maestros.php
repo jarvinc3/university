@@ -7,14 +7,34 @@ $nombre = $_POST["name"];
 $apellidos = $_POST["apellidos"];
 $direccion = $_POST['direccion'];
 $fecha_nacimiento = $_POST['fecha_nacimiento'];
+$curso = $_POST["curso"];
 
-$consulta = $mysqli->query("SELECT *FROM maestros WHERE email = '$email'");
+// Obtén el ID del maestro
+$consulta = $mysqli->query("SELECT * FROM maestros WHERE email = '$email'");
 $resultado = $consulta->fetch_assoc();
-$correo = $resultado['email'];
-$consulta_estudiantes = $mysqli->prepare("SELECT * FROM maestros WHERE email = ?");
-$consulta_estudiantes->bind_param("s", $correo);
-$consulta_estudiantes->execute();
-$resultado_estudiantes = $consulta_estudiantes->get_result()->fetch_assoc();
+$id_maestro = $resultado['id'];
+
+// Obtén el ID del curso anterior al que estaba asignado el maestro
+$consulta_curso_anterior = $mysqli->query("SELECT maestroID FROM cursos WHERE maestroID = $id_maestro");
+$curso_anterior = $consulta_curso_anterior->fetch_assoc();
+$id_curso_anterior = $curso_anterior['maestroID'];
+
+// Actualiza el curso anterior para desvincular al maestro
+if (!empty($id_curso_anterior)) {
+    $query_desvincular = "UPDATE cursos SET maestroID = NULL WHERE cursoID = ?";
+    $stmt_desvincular = $mysqli->prepare($query_desvincular);
+    $stmt_desvincular->bind_param("i", $id_curso_anterior);
+    $stmt_desvincular->execute();
+    $stmt_desvincular->close();
+}
+
+// Actualiza el nuevo curso para asignar al maestro
+$query_asignar = "UPDATE cursos SET maestroID = ? WHERE cursoID = ?";
+$stmt_asignar = $mysqli->prepare($query_asignar);
+$stmt_asignar->bind_param("ii", $id_maestro, $curso);
+$stmt_asignar->execute();
+$stmt_asignar->close();
+// var_dump($id_maestro);
 
 $contrahash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -49,7 +69,7 @@ if (
 
     }
     if (!empty($fecha_nacimiento)) {
-        $query_estudiantes .= "`fecha_nacimiento` = ?, ";
+        $query_estudiantes .= "`fecha_de_nacimiento` = ?, ";
         $params_estudiantes[] = $fecha_nacimiento;
         $_SESSION['fecha_nacimiento'] = $fecha_nacimiento;
 
@@ -60,7 +80,7 @@ if (
 
     $query_estudiantes = rtrim($query_estudiantes, ", ");
     $query_estudiantes .= " WHERE `maestros`.`email` = ?";
-    $params_estudiantes[] = $correo;
+    $params_estudiantes[] = $email;
 
 
     $stmt_estudiantes = $mysqli->prepare($query_estudiantes);
