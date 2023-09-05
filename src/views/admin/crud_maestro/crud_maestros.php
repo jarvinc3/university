@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['email'])) {
+    header('Location: ../../login.php');
+    exit();
+} else {
 require_once __DIR__ . '/../../../conexion/db.php';
 $consulta = $mysqli->query("SELECT maestros.*, cursos.nombreCurso 
  FROM maestros 
@@ -177,4 +181,4 @@ LEFT JOIN cursos ON maestros.id = cursos.maestroID");
     </main>
 </body>
 
-</html>
+</html><?php } ?>

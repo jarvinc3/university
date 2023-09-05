@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['email'])) {
+    header('Location: ../../login.php');
+    exit();
+} else {
 require_once __DIR__ . '/../../../conexion/db.php';
 $consultaClases = $mysqli->query("SELECT cursos.*, maestros.name
 FROM cursos 
@@ -168,4 +172,4 @@ INNER JOIN maestros ON cursos.maestroID = maestros.id");
     </main>
 </body>
 
-</html>
+</html><?php } ?>

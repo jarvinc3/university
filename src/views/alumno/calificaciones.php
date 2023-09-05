@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['email'])) {
+    header('Location: ../login.php');
+    exit();
+} else {
 require_once __DIR__ . '/../../conexion/db.php';
 $email = $_SESSION['email'];
 $consulta = $mysqli->query("SELECT *FROM estudiantes WHERE email = '$email'");
@@ -163,4 +167,4 @@ $resultado = $consulta->fetch_assoc();
     </main>
 </body>
 
-</html>
+</html><?php } ?>

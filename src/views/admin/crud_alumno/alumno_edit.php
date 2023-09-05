@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['email'])) {
+    header('Location: ../../login.php');
+    exit();
+} else {
 require_once __DIR__ . '/../../../conexion/db.php';
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -157,4 +161,4 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     </main>
 </body>
 
-</html>
+</html><?php } ?>

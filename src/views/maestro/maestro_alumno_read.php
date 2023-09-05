@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['email'])) {
+    header('Location: ../login.php');
+    exit();
+} else {
 require_once __DIR__ . '/../../conexion/db.php';
 $email = $_SESSION['email'];
 $consulta = $mysqli->query("SELECT *FROM maestros WHERE email = '$email'");
@@ -157,7 +161,7 @@ $stmt->close();
                                 echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . "</td>";
                                 echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . "</td>";
                                 echo "<td class='px-2 py-2 border-[1px] border-gray-200 flex justify-center flex-row-reverse gap-2'>
-                                    <a class=' flex items-center justify-center' href='./edit_clases.php?id=" . "'>
+                                    <a class=' flex items-center justify-center' href='#?id=" . "'>
                                         <span class='material-symbols-outlined text-blue-400 text-2xl'>
                                             <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' class='bi bi-send-plus' viewBox='0 0 16 16'>
                                                 <path d='M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855a.75.75 0 0 0-.124 1.329l4.995 3.178 1.531 2.406a.5.5 0 0 0 .844-.536L6.637 10.07l7.494-7.494-1.895 4.738a.5.5 0 1 0 .928.372l2.8-7Zm-2.54 1.183L5.93 9.363 1.591 6.602l11.833-4.733Z'/>
@@ -192,4 +196,4 @@ $stmt->close();
     </main>
 </body>
 
-</html>
+</html> <?php } ?>

@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['email'])) {
+    header('Location: ../../login.php');
+    exit();
+} else {
 require_once __DIR__ . '/../../../conexion/db.php';
 $query = "SELECT email, 'administrador' AS rol, id AS id FROM administrador
           UNION
@@ -135,4 +139,4 @@ $result = $mysqli->query($query);
     </main>
 </body>
 
-</html>
+</html><?php } ?>
