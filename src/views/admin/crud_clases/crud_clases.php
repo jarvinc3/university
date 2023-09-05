@@ -1,3 +1,12 @@
+<?php
+session_start();
+require_once __DIR__ . '/../../../conexion/db.php';
+$consultaClases = $mysqli->query("SELECT cursos.*, maestros.name
+FROM cursos 
+INNER JOIN maestros ON cursos.maestroID = maestros.id");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -124,19 +133,19 @@
                             </thead>
                             <tbody>
                                 <?php
-                                // while ($row = $consultaEstudiantes->fetch_assoc()) {
+                                while ($row = $consultaClases->fetch_assoc()) {
 
                                 echo "<tr>";
-                                echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . "</td>";
-                                echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . "</td>";
-                                echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . "</td>";
+                                echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['cursoID'] . "</td>";
+                                echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['nombreCurso'] . "</td>";
+                                echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['name'] . "</td>";
                                 echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . "</td>";
                                 echo "<td class='px-2 py-2 border-[1px] border-gray-200 flex justify-center'>
-                                    <a href='./edit_clases.php?id=" . "'><span class='material-symbols-outlined text-blue-400'>edit_square</span></a>
+                                    <a href='./edit_clases.php?cursoID=" . $row['cursoID'] . "'><span class='material-symbols-outlined text-blue-400'>edit_square</span></a>
                                     <a href='#?id=" . "'><span class='material-symbols-outlined text-red-400'>delete</span></a>
                                 </td>";
                                 echo "</tr>";
-                                // }
+                                }
                                 ?>
                             </tbody>
                         </table>

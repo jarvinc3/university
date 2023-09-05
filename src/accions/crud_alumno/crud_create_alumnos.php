@@ -20,8 +20,9 @@ try {
         $contrahash = password_hash($password, PASSWORD_DEFAULT);
 
         // Corrección en la cadena de consulta SQL aquí
-        $mysqli->query("INSERT INTO estudiantes (email, pssword, name,  matricula, apellido, direccion, fecha_de_nacimiento) 
-            VALUES ('$email', '$contrahash', '$DNI' , '$nombre', '$apellidos', '$direccion', '$fecha_nacimiento');");
+        $mysqli->query("INSERT INTO estudiantes (name, email, pssword, matricula, apellido, direccion, fecha_de_nacimiento) 
+        VALUES ('$nombre', '$email', '$contrahash', '$DNI', '$apellidos', '$direccion', '$fecha_nacimiento');");
+
         
         header("location: /src/views/admin/crud_alumno/crud_alumnos.php");
         exit();

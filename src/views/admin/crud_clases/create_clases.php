@@ -1,3 +1,20 @@
+<?php
+session_start();
+require_once __DIR__ . '/../../../conexion/db.php';
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['cursoID'])) {
+    $id = $_GET['cursoID'];
+
+    $consulta = $mysqli->query("SELECT cursos.*, maestros.name , maestros.id
+    FROM cursos
+    INNER JOIN maestros ON cursos.maestroID = maestros.id");
+    $resultado = $consulta->fetch_assoc();
+
+    $consulta2 = $mysqli->query("SELECT * FROM cursos WHERE cursoID = '$id'");
+    $resultado2 = $consulta2->fetch_assoc();
+    
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,13 +99,13 @@
                     </div>
                     <hr>
                     <div class="flex flex-col gap-4 py-3 px-6">
-                        <form class="flex flex-col gap-4 py-3 px-6" method="post" action="#">
+                        <form class="flex flex-col gap-4 py-3 px-6" method="post" action="/src/accions/crud_clases/create_clase.php">
                             <div>
                                 <strong>
                                     <p>Nombre de la Materia</p>
                                 </strong>
                                 <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md  hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
-                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="email" value="<?php echo $resultado['email']; ?>">
+                                    <input class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="curso_name" value="">
                                 </div>
                             </div>
                             <div>
@@ -96,7 +113,16 @@
                                     <p>Maestros disponibles para la clase</p>
                                 </strong>
                                 <div class="flex items-center border-gray-300 border-2 pr-3 rounded-md  hover:bg-slate-200  hover:shadow-custom hover:shadow-zinc-800">
-                                    <select class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="name" value="<?php echo $resultado['name']; ?>"></select>
+                                <select class="px-3 py-[6px] w-[100%] rounded-l-md hover:bg-slate-200 focus:outline-0" type="text" name="id_maestro" value="">
+                                        <?php
+                                        $consulta1 = $mysqli->query("SELECT * from maestros");
+                                        $resultado1 = $consulta1->fetch_assoc();
+                                        while ($row = $consulta1->fetch_assoc()) {
+                                            $selected = ($row['id'] == $resultado1['id']) ? 'selected' : '';
+                                            echo "<option value='" . $row['id'] . "' $selected>" . $row['id'] . " - " . $row['name'] . "</option>";
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="flex gap-2 justify-between">

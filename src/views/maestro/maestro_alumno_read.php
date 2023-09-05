@@ -4,6 +4,23 @@ require_once __DIR__ . '/../../conexion/db.php';
 $email = $_SESSION['email'];
 $consulta = $mysqli->query("SELECT *FROM maestros WHERE email = '$email'");
 $resultado = $consulta->fetch_assoc();
+$id_maestro = $resultado['id'];
+
+$query2  = $mysqli->query("SELECT * FROM cursos
+WHERE maestroID = '$id_maestro'");
+$resultado2 = $query2->fetch_assoc();
+
+$query = "SELECT estudiantes.name, estudiantes.id
+          FROM estudiantes
+          INNER JOIN inscripciones ON estudiantes.id = inscripciones.estudianteID
+          INNER JOIN cursos ON inscripciones.cursoID = cursos.cursoID
+          WHERE cursos.maestroID = ?";
+
+$stmt = $mysqli->prepare($query);
+$stmt->bind_param("i", $id_maestro);
+$stmt->execute();
+$result = $stmt->get_result();
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +96,7 @@ $resultado = $consulta->fetch_assoc();
             </nav>
             <div class="p-5 h-[80%] flex flex-col gap-6 mt-[70px] ">
                 <div class="flex justify-between">
-                    <h1 class=" text-2xl font-medium text-gray-700">Alumnos de la Clase de Guarani</h1>
+                    <h1 class=" text-2xl font-medium text-gray-700">Alumnos de la Clase de <?php echo $resultado2['nombreCurso'] ?></h1>
                     <div class="flex gap-1">
                         <a href="./vMaestro.php">
                             <p class="text-blue-500">Home</p>
@@ -88,7 +105,7 @@ $resultado = $consulta->fetch_assoc();
                 </div>
                 <div class="bg-white shadow-sm shadow-gray-400 w-[100%] rounded-sm  flex flex-col justify-center gap-1">
                     <div class="flex items-center p-3 pl-6">
-                        <h2>Alumnos de clase guarani</h2>
+                        <h2>Lista de Estudiantes del Curso <?php echo $resultado2['nombreCurso'] ?></h2>
                     </div>
                     <hr>
                     <div class="w-[100%] flex justify-end gap-1 p-2 pt-4 px-3">
@@ -133,11 +150,10 @@ $resultado = $consulta->fetch_assoc();
                             </thead>
                             <tbody>
                                 <?php
-                                // while ($row = $consultaEstudiantes->fetch_assoc()) {
-
+                                while ($row = $result->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . "</td>";
-                                echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . "</td>";
+                                echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['id'] . "</td>";
+                                echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['name'] . "</td>";
                                 echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . "</td>";
                                 echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . "</td>";
                                 echo "<td class='px-2 py-2 border-[1px] border-gray-200 flex justify-center flex-row-reverse gap-2'>
@@ -154,7 +170,7 @@ $resultado = $consulta->fetch_assoc();
                                     </a>
                                 </td>";
                                 echo "</tr>";
-                                // }
+                                }
                                 ?>
                             </tbody>
                         </table>

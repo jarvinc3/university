@@ -1,13 +1,17 @@
 <?php
 session_start();
 require_once __DIR__ . '/../../../conexion/db.php';
-$consultaEstudiantes = $mysqli->query("SELECT * FROM maestros");
+$consultaEstudiantes = $mysqli->query("SELECT maestros.*, cursos.nombreCurso
+FROM maestros 
+INNER JOIN cursos ON cursos.maestroID = maestros.id");
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $id = $_GET['id'];
 
     $consulta = $mysqli->query("SELECT *FROM maestros WHERE id = '$id'");
     $resultado = $consulta->fetch_assoc();
 }
+
+
 
 ?>
 
@@ -153,7 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
                                     echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['email'] .   "</td>";
                                     echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['direccion'] . "</td>";
                                     echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['fecha_de_nacimiento'] . "</td>";
-                                    echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" .  "</td>";
+                                    echo "<td class='px-2 py-2 border-[1px] border-gray-200'>" . $row['nombreCurso'] .  "</td>";
                                     echo "<td class='px-2 py-2 border-[1px] border-gray-200 flex justify-center'>
                                     <a href='./maestro_edit.php?id=" . $row['id'] . "'><span class='material-symbols-outlined text-blue-400'>edit_square</span></a>
                                     <a href='/src/accions/crud_maestro/delete_maestros.php?id=" . $row['id'] . "'><span class='material-symbols-outlined text-red-400'>delete</span></a>

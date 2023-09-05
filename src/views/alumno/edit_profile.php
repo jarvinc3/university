@@ -44,7 +44,7 @@ $resultado = $consulta->fetch_assoc();
                     <span class="material-symbols-outlined text-[#9c9fa1]">task</span>
                     <h2 class="text-[#9c9fa1] font-medium">Ver Calificaciones</h2>
                 </a>
-                <a href="" class="flex gap-3">
+                <a href="./clases/clases_read.php" class="flex gap-3">
                     <span class="material-symbols-outlined text-[#9c9fa1]">tv_gen</span>
                     <h2 class="text-[#9c9fa1] font-medium">Administra tus Clases</h2>
                 </a>
